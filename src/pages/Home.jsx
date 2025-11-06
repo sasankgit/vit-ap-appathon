@@ -3,248 +3,195 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-600 to-pink-400 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-700 to-pink-500 text-white">
       {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          {/* Left Content */}
           <div className="flex-1 space-y-6">
             <div className="flex items-center gap-2">
               <span className="text-4xl font-bold text-purple-200">{'}'}</span>
-              <h1 className="text-5xl text-shadow-blue-50 font-bold">StudyConnect</h1>
+              <h1 className="text-5xl font-bold drop-shadow-lg">StudyConnect</h1>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
+
+            <h2 className="text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-purple-100">
               Is a Premier Campus
               <br />
               Study Group
               <br />
               Platform
             </h2>
-            <p class="bg-purple-600 text-purple-400 p-6 rounded-lg shadow-lg text-center font-medium">
-  Connecting students across campus with matching subjects to form collaborative study groups with smart matching technology
-</p>
+
+            <p className="bg-white/10 backdrop-blur-md border border-white/20 text-purple-100 p-6 rounded-2xl shadow-lg text-center font-medium">
+              Connecting students across campus with matching subjects to form collaborative study groups with smart matching technology
+            </p>
           </div>
 
+          {/* Right Content */}
           <div className="flex-1 flex flex-col items-center gap-8">
-            <Link to = "/groups">
-            <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
-              GET STARTED
-            </button>
+            <Link to="/groups">
+              <button className="bg-white/10 backdrop-blur-lg border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 shadow-lg">
+                GET STARTED
+              </button>
             </Link>
-            
+
             <div className="grid grid-cols-2 gap-6 w-full max-w-md">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-lg text-center">
+                <div className="text-6xl font-bold text-white/90 drop-shadow">500+</div>
+                <p className="text-sm mt-2 text-purple-200">Active Students</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-lg text-center">
+                <div className="text-6xl font-bold text-white/90 drop-shadow">50+</div>
+                <p className="text-sm mt-2 text-purple-200">Study Groups</p>
+              </div>
+            </div>
 
-  <div className="bg-purple-950 bg-opacity-30 backdrop-blur-lg rounded-3xl p-8 border border-purple-400 border-opacity-40">
-    <div className="text-6xl font-bold bg-gradient-to-r from-purple-300 to-pink-900 bg-clip-text text-transparent">
-      500+
-    </div>
-    <p className="text-sm mt-2 text-purple-200">Active Students</p>
-  </div>
-  
-  <div className="bg-purple-950 bg-opacity-30 backdrop-blur-lg rounded-3xl p-8 border border-purple-400 border-opacity-40">
-    <div className="text-6xl font-bold bg-gradient-to-r from-purple-300 to-pink-900 bg-clip-text text-transparent">
-      50+
-    </div>
-    <p className="text-sm mt-2 text-purple-200">Study Groups</p>
-  </div>
-  
-</div>
-
+            {/* Student Avatars */}
             <div className="flex gap-4 mt-4">
-              <div className="w-12 h-12 bg-purple-300 rounded-full flex items-center justify-center">
-                <img src="/sample.png" alt="Student" className="w-10 h-10 rounded-full object-cover" />
-              </div>
-              <div className="w-12 h-12 bg-pink-300 rounded-full flex items-center justify-center">
-                <img src="/sample.png" alt="Student" className="w-10 h-10 rounded-full object-cover" />
-              </div>
-              <div className="w-12 h-12 bg-red-300 rounded-full flex items-center justify-center">
-                <img src="/sample.png" alt="Student" className="w-10 h-10 rounded-full object-cover" />
-              </div>
-              <div className="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
-                <img src="/sample.png" alt="Student" className="w-10 h-10 rounded-full object-cover" />
-              </div>
+              {Array(4)
+                .fill('/sample.png')
+                .map((src, i) => (
+                  <div
+                    key={i}
+                    className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-inner"
+                  >
+                    <img src={src} alt="Student" className="w-10 h-10 rounded-full object-cover" />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Features Section */}
-      <div className="bg-blue-400 bg-opacity-20 backdrop-blur-lg rounded-xl border border-blue-300 shadow-lg py-20">
+      {/* How It Works */}
+      <div className="bg-white/10 backdrop-blur-lg border-t border-white/20 py-20">
         <div className="container mx-auto px-6">
-          <h3 className="text-4xl font-bold text-center mb-16">How It Works</h3>
-          
+          <h3 className="text-4xl font-bold text-center mb-16 drop-shadow-lg">How It Works</h3>
+
           <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center space-y-4">
-              <div className="w-20 h-20 bg-purple-500 rounded-2xl mx-auto flex items-center justify-center">
-                <span className="text-4xl">📚</span>
-              </div>
+            <div className="text-center space-y-4 bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-lg">
+              <div className="w-20 h-20 bg-white/20 rounded-2xl mx-auto flex items-center justify-center text-4xl">📚</div>
               <h4 className="text-2xl font-bold">Select Your Subjects</h4>
-              <p className="text-purple-200">
-                Choose the courses you're currently enrolled in and need help with. Our system tracks all subjects across your university.
+              <p className="text-purple-100">
+                Choose the courses you're enrolled in. Our system tracks all subjects across your university.
               </p>
             </div>
-            <div className='p-5 bg-amber-400'>
-              <Link to='summarize'>
-              <button>
-                smart AI summarizer
-              </button>
+
+            <div className="text-center space-y-4 bg-gradient-to-r from-yellow-400/30 to-pink-400/30 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-lg">
+              <Link to="summarize">
+                <button className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-white font-semibold hover:bg-white/30 transition">
+                  Smart AI Summarizer
+                </button>
               </Link>
             </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-20 h-20 bg-pink-500 rounded-2xl mx-auto flex items-center justify-center">
-                <span className="text-4xl">🎯</span>
-              </div>
+            <div className="text-center space-y-4 bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-lg">
+              <div className="w-20 h-20 bg-white/20 rounded-2xl mx-auto flex items-center justify-center text-4xl">🎯</div>
               <h4 className="text-2xl font-bold">Smart Matching</h4>
-              <p className="text-purple-200">
-                Our intelligent algorithm finds students with matching subjects and compatible study schedules, ensuring productive collaborations.
+              <p className="text-purple-100">
+                Find students with matching subjects and compatible study schedules for productive collaborations.
               </p>
             </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-20 h-20 bg-purple-400 rounded-2xl mx-auto flex items-center justify-center">
-                <span className="text-4xl">👥</span>
-              </div>
+            <div className="text-center space-y-4 bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-lg">
+              <div className="w-20 h-20 bg-white/20 rounded-2xl mx-auto flex items-center justify-center text-4xl">👥</div>
               <h4 className="text-2xl font-bold">Form Study Groups</h4>
-              <p className="text-purple-200">
-                Connect with matched students and create or join study groups. Collaborate, share notes, and ace your exams together.
+              <p className="text-purple-100">
+                Connect and collaborate in groups — share notes, discuss topics, and ace your exams together.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Benefits Section */}
+      {/* Why Choose Section */}
       <div className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-4xl font-bold text-center mb-16">Why Choose StudyConnect?</h3>
-            
-            <div className="space-y-8">
-              <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-                <h4 className="text-2xl font-bold mb-4">🔗 Campus-Wide Connectivity</h4>
-                <p className="text-purple-100">
-                  Break out of your immediate circle and connect with students from different departments, years, and programs who share your academic interests. Expand your network while improving your grades.
-                </p>
+        <div className="container mx-auto px-6 max-w-5xl">
+          <h3 className="text-4xl font-bold text-center mb-16">Why Choose StudyConnect?</h3>
+          <div className="space-y-8">
+            {[
+              ['🔗 Campus-Wide Connectivity', 'Connect with students from all departments, years, and programs who share your academic goals.'],
+              ['⚡ Dynamic Attention System', 'Our attention system ensures you find motivated peers ready to study now.'],
+              ['📖 Subject-Specific Focus', 'Find students tackling the same topics — share resources and grow together.'],
+              ['🎓 Academic Excellence', 'Study groups lead to better academic performance. Join and boost your results.'],
+              ['🔒 Safe & Verified', 'Only verified university students can join — ensuring a secure learning space.'],
+            ].map(([title, desc]) => (
+              <div
+                key={title}
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-md hover:shadow-xl transition"
+              >
+                <h4 className="text-2xl font-bold mb-3">{title}</h4>
+                <p className="text-purple-100">{desc}</p>
               </div>
-
-              <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-                <h4 className="text-2xl font-bold mb-4">⚡ Dynamic Attention System</h4>
-                <p className="text-purple-100">
-                  Our unique attention mechanism ensures you're matched with students who are actively seeking study partners right now. No more ghost members or inactive groups - connect with motivated peers ready to study.
-                </p>
-              </div>
-
-              <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-                <h4 className="text-2xl font-bold mb-4">📖 Subject-Specific Focus</h4>
-                <p className="text-purple-100">
-                  Whether it's Calculus, Organic Chemistry, or Software Engineering, find students struggling with or excelling in the same topics. Share resources, discuss concepts, and prepare for exams together.
-                </p>
-              </div>
-
-              <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-                <h4 className="text-2xl font-bold mb-4">🎓 Academic Excellence</h4>
-                <p className="text-purple-100">
-                  Studies show that students who participate in study groups perform better academically. Our platform makes it easy to find the right study partners, schedule sessions, and track your progress together.
-                </p>
-              </div>
-
-              <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-                <h4 className="text-2xl font-bold mb-4">🔒 Safe & Verified</h4>
-                <p className="text-purple-100">
-                  Only verified students from your university can join. Connect with confidence knowing everyone on the platform is a legitimate member of your academic community.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Stats Section */}
-      <div className="bg-black bg-opacity-30 backdrop-blur-md py-20">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-5xl font-bold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-                95%
+      <div className="bg-white/10 backdrop-blur-md py-20 border-t border-white/20">
+        <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+          {[
+            ['95%', 'Student Satisfaction'],
+            ['2500+', 'Study Sessions'],
+            ['30+', 'Subjects Covered'],
+            ['24/7', 'Platform Access'],
+          ].map(([num, label]) => (
+            <div key={num}>
+              <div className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-pink-300 drop-shadow">
+                {num}
               </div>
-              <p className="mt-2 text-purple-200">Student Satisfaction</p>
+              <p className="mt-2 text-purple-200">{label}</p>
             </div>
-            <div>
-              <div className="text-5xl font-bold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-                2500+
-              </div>
-              <p className="mt-2 text-purple-200">Study Sessions</p>
-            </div>
-            <div>
-              <div className="text-5xl font-bold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-                30+
-              </div>
-              <p className="mt-2 text-purple-200">Subjects Covered</p>
-            </div>
-            <div>
-              <div className="text-5xl font-bold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-                24/7
-              </div>
-              <p className="mt-2 text-purple-200">Platform Access</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Testimonials Section */}
+      {/* Testimonials */}
       <div className="py-20">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 max-w-5xl">
           <h3 className="text-4xl font-bold text-center mb-16">What Students Say</h3>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-              <div className="flex items-center gap-4 mb-4">
-                <img src="/sample.png" alt="Student" className="w-16 h-16 rounded-full object-cover" />
-                <div>
-                  <h5 className="font-bold text-lg">Sarah M.</h5>
-                  <p className="text-purple-200 text-sm">Computer Science, 3rd Year</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              ['Sarah M.', 'Computer Science, 3rd Year', 'I was struggling with Data Structures until I found a study group. Now my grades have improved!'],
+              ['James K.', 'Biology, 2nd Year', 'The dynamic matching is amazing. Always find active students who really want to study!'],
+            ].map(([name, course, feedback]) => (
+              <div
+                key={name}
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-md"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <img src="/sample.png" alt={name} className="w-16 h-16 rounded-full object-cover" />
+                  <div>
+                    <h5 className="font-bold text-lg">{name}</h5>
+                    <p className="text-purple-200 text-sm">{course}</p>
+                  </div>
                 </div>
+                <p className="text-purple-100 italic">"{feedback}"</p>
               </div>
-              <p className="text-purple-100">
-                "I was struggling with Data Structures until I found a study group through this app. Now we meet twice a week and my grades have improved dramatically!"
-              </p>
-            </div>
-
-            <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border border-purple-300">
-              <div className="flex items-center gap-4 mb-4">
-                <img src="/sample.png" alt="Student" className="w-16 h-16 rounded-full object-cover" />
-                <div>
-                  <h5 className="font-bold text-lg">James K.</h5>
-                  <p className="text-purple-200 text-sm">Biology, 2nd Year</p>
-                </div>
-              </div>
-              <p className="text-purple-100">
-                "The dynamic matching is incredible. I always find active students who actually want to study, not just chat. Best academic tool I've used!"
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* CTA Section with Buttons */}
-      <div className="bg-black bg-opacity-40 backdrop-blur-md py-20">
+      {/* CTA Section */}
+      <div className="bg-white/10 backdrop-blur-md border-t border-white/20 py-20">
         <div className="container mx-auto px-6 text-center">
           <h3 className="text-4xl font-bold mb-6">Ready to Transform Your Study Experience?</h3>
-          <p className="text-xl text-purple-200 mb-12 max-w-2xl mx-auto">
-            Join hundreds of students already using StudyConnect to improve their grades and make meaningful academic connections.
+          <p className="text-xl text-purple-100 mb-12 max-w-2xl mx-auto">
+            Join hundreds of students already improving their learning with StudyConnect.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link 
-              to="/collection" 
-              className="bg-white text-purple-900 px-12 py-4 rounded-full font-bold text-lg hover:bg-purple-100 transition-colors shadow-lg"
+            <Link
+              to="/collection"
+              className="bg-white/20 backdrop-blur-md px-12 py-4 rounded-full font-bold text-lg hover:bg-white/30 transition shadow-lg border border-white/20"
             >
-              View messages
+              View Messages
             </Link>
-            
-            <Link 
-              to="/login" 
-              className="bg-purple-600 text-white px-12 py-4 rounded-full font-bold text-lg hover:bg-purple-700 transition-colors border-2 border-white shadow-lg"
+            <Link
+              to="/login"
+              className="bg-purple-700/70 backdrop-blur-md px-12 py-4 rounded-full font-bold text-lg hover:bg-purple-600 transition border border-white/20"
             >
               Login
             </Link>
@@ -253,10 +200,8 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black bg-opacity-50 py-8">
-        <div className="container mx-auto px-6 text-center text-purple-200">
-          <p>© 2024 StudyConnect. Empowering students through collaboration.</p>
-        </div>
+      <footer className="bg-white/10 backdrop-blur-md border-t border-white/20 py-8 text-center text-purple-100">
+        <p>© 2024 StudyConnect. Empowering students through collaboration.</p>
       </footer>
     </div>
   );
