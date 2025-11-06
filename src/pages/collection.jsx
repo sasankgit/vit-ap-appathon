@@ -4,22 +4,58 @@ import { supabase } from '../supabase';
 export default function ClassGroupCreator() {
   const [step, setStep] = useState(1);
   const [selectedBuilding, setSelectedBuilding] = useState('');
-  const [selectedFloor, setSelectedFloor] = useState('');
-  const [subjectName, setSubjectName] = useState('');
-  const [classroomNumber, setClassroomNumber] = useState('');
+  const [selectedSlot, setSelectedSlot] = useState('');
+  const [facultyName, setFacultyName] = useState('');
+  const [roomNumber, setRoomNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
   const buildings = [
-    { id: 'building-a', name: 'Academic Building 1', icon: '🏛️' },
-    { id: 'building-b', name: 'Central Block', icon: '🏢' },
-    { id: 'building-c', name: 'Academic Building 2', icon: '🏫' }
+    { id: 'AB1', name: 'AB1', icon: '🏛️' },
+    { id: 'CB', name: 'CB', icon: '🏢' },
+    { id: 'AB2', name: 'AB2', icon: '🏛️' }
+    
   ];
 
-  const floors = [
-    { id: 'floor-1', name: 'Ground Floor', number: 1 },
-    { id: 'floor-2', name: 'First Floor', number: 2 },
-    { id: 'floor-3', name: 'Second Floor', number: 3 }
+  const slots = [
+    { id: 'A1', name: 'A1 (08:00-08:50)', time: '08:00-08:50' },
+    { id: 'F1', name: 'F1 (08:00-08:50)', time: '08:00-08:50' },
+    { id: 'D1', name: 'D1 (08:00-08:50)', time: '08:00-08:50' },
+    { id: 'TB1', name: 'TB1 (08:00-08:50)', time: '08:00-08:50' },
+    { id: 'TG1', name: 'TG1 (08:00-08:50)', time: '08:00-08:50' },
+    { id: 'A2', name: 'A2 (08:51-09:40)', time: '08:51-09:40' },
+    { id: 'F2', name: 'F2 (08:51-09:40)', time: '08:51-09:40' },
+    { id: 'D2', name: 'D2 (08:51-09:40)', time: '08:51-09:40' },
+    { id: 'TB2', name: 'TB2 (08:51-09:40)', time: '08:51-09:40' },
+    { id: 'TG2', name: 'TG2 (08:51-09:40)', time: '08:51-09:40' },
+    { id: 'B1', name: 'B1 (09:50-10:40)', time: '09:50-10:40' },
+    { id: 'G1', name: 'G1 (09:50-10:40)', time: '09:50-10:40' },
+    { id: 'E1', name: 'E1 (09:50-10:40)', time: '09:50-10:40' },
+    { id: 'TC1', name: 'TC1 (09:50-10:40)', time: '09:50-10:40' },
+    { id: 'TAA1', name: 'TAA1 (09:50-10:40)', time: '09:50-10:40' },
+    { id: 'B2', name: 'B2 (10:41-11:30)', time: '10:41-11:30' },
+    { id: 'G2', name: 'G2 (10:41-11:30)', time: '10:41-11:30' },
+    { id: 'E2', name: 'E2 (10:41-11:30)', time: '10:41-11:30' },
+    { id: 'TC2', name: 'TC2 (10:41-11:30)', time: '10:41-11:30' },
+    { id: 'TAA2', name: 'TAA2 (10:41-11:30)', time: '10:41-11:30' },
+    { id: 'C1', name: 'C1 (11:40-12:30)', time: '11:40-12:30' },
+    { id: 'TE1', name: 'TE1 (11:40-12:30)', time: '11:40-12:30' },
+    { id: 'TD1', name: 'TD1 (11:40-12:30)', time: '11:40-12:30' },
+    { id: 'TBB1', name: 'TBB1 (11:40-12:30)', time: '11:40-12:30' },
+    { id: 'C2', name: 'C2 (12:31-13:20)', time: '12:31-13:20' },
+    { id: 'TE2', name: 'TE2 (12:31-13:20)', time: '12:31-13:20' },
+    { id: 'TD2', name: 'TD2 (12:31-13:20)', time: '12:31-13:20' },
+    { id: 'TBB2', name: 'TBB2 (12:31-13:20)', time: '12:31-13:20' },
+    { id: 'V3', name: 'V3 (14:10-16:00)', time: '14:10-16:00' },
+    { id: 'V4', name: 'V4 (16:10-18:00)', time: '16:10-18:00' },
+    { id: 'V5', name: 'V5 (18:10-20:00)', time: '18:10-20:00' },
+    { id: 'V6', name: 'V6 (20:10-22:00)', time: '20:10-22:00' },
+    { id: 'V7', name: 'V7 (08:00-09:40)', time: '08:00-09:40' },
+    { id: 'V8', name: 'V8 (09:50-11:30)', time: '09:50-11:30' },
+    { id: 'V9', name: 'V9 (11:40-13:20)', time: '11:40-13:20' },
+    { id: 'V10', name: 'V10 (14:10-15:50)', time: '14:10-15:50' },
+    { id: 'V11', name: 'V11 (16:00-17:40)', time: '16:00-17:40' },
+    { id: 'V12', name: 'V12 (17:50-19:30)', time: '17:50-19:30' }
   ];
 
   const handleBuildingSelect = (buildingId) => {
@@ -28,14 +64,14 @@ export default function ClassGroupCreator() {
     setMessage('');
   };
 
-  const handleFloorSelect = (floorNumber) => {
-    setSelectedFloor(floorNumber);
+  const handleSlotSelect = (slotId) => {
+    setSelectedSlot(slotId);
     setStep(3);
     setMessage('');
   };
 
   const handleCreateGroup = async () => {
-    if (!subjectName.trim() || !classroomNumber.trim()) {
+    if (!facultyName.trim() || !roomNumber.trim()) {
       setMessage('Please fill in all fields');
       return;
     }
@@ -49,9 +85,9 @@ export default function ClassGroupCreator() {
         .insert([
           {
             building_id: selectedBuilding,
-            floor_number: selectedFloor,
-            subject_name: subjectName.trim(),
-            classroom_number: classroomNumber.trim(),
+            slot: selectedSlot,
+            faculty_name: facultyName.trim(),
+            room_number: roomNumber.trim(),
             created_at: new Date().toISOString()
           }
         ])
@@ -64,9 +100,9 @@ export default function ClassGroupCreator() {
       setTimeout(() => {
         setStep(1);
         setSelectedBuilding('');
-        setSelectedFloor('');
-        setSubjectName('');
-        setClassroomNumber('');
+        setSelectedSlot('');
+        setFacultyName('');
+        setRoomNumber('');
         setMessage('');
       }, 2000);
 
@@ -81,7 +117,7 @@ export default function ClassGroupCreator() {
   const handleBack = () => {
     if (step === 3) {
       setStep(2);
-      setSelectedFloor('');
+      setSelectedSlot('');
     } else if (step === 2) {
       setStep(1);
       setSelectedBuilding('');
@@ -98,7 +134,7 @@ export default function ClassGroupCreator() {
             <h1 className="text-4xl font-bold">StudyConnect</h1>
           </div>
           <h2 className="text-3xl font-bold mb-2">Create Your Class Group</h2>
-          <p className="text-purple-200">Select building, floor, and add class details</p>
+          <p className="text-purple-200">Select building, slot, and add class details</p>
         </div>
 
         <div className="max-w-2xl mx-auto mb-12">
@@ -114,7 +150,7 @@ export default function ClassGroupCreator() {
               <div className={`w-12 h-12 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-white text-purple-900' : 'bg-purple-400 text-white'} font-bold transition-colors`}>
                 2
               </div>
-              <span className="text-sm mt-2">Floor</span>
+              <span className="text-sm mt-2">Slot</span>
             </div>
             <div className={`flex-1 h-1 mx-4 ${step >= 3 ? 'bg-white' : 'bg-purple-400'} transition-colors`}></div>
             <div className="flex flex-col items-center">
@@ -129,7 +165,7 @@ export default function ClassGroupCreator() {
         <div className="max-w-4xl mx-auto">
           {step === 1 && (
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-center mb-8">Select Your Academic Building</h3>
+              <h3 className="text-2xl font-bold text-center mb-8">Select Your Building</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 {buildings.map((building) => (
                   <button
@@ -153,18 +189,18 @@ export default function ClassGroupCreator() {
               >
                 ← Back to Buildings
               </button>
-              <h3 className="text-2xl font-bold text-center mb-8">Select Floor</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {floors.map((floor) => (
+              <h3 className="text-2xl font-bold text-center mb-8">Select Time Slot</h3>
+              <div className="grid md:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto px-2">
+                {slots.map((slot) => (
                   <button
-                    key={floor.id}
-                    onClick={() => handleFloorSelect(floor.number)}
-                    className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border-2 border-purple-300 hover:border-white hover:bg-opacity-40 transition-all transform hover:scale-105"
+                    key={slot.id}
+                    onClick={() => handleSlotSelect(slot.id)}
+                    className="bg-black bg-opacity-30 backdrop-blur-sm rounded-xl p-6 border-2 border-purple-300 hover:border-white hover:bg-opacity-40 transition-all transform hover:scale-105"
                   >
-                    <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-                      {floor.number}
+                    <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
+                      {slot.id}
                     </div>
-                    <h4 className="text-xl font-bold">{floor.name}</h4>
+                    <h4 className="text-sm">{slot.time}</h4>
                   </button>
                 ))}
               </div>
@@ -177,7 +213,7 @@ export default function ClassGroupCreator() {
                 onClick={handleBack}
                 className="text-purple-200 hover:text-white flex items-center gap-2 mb-4"
               >
-                ← Back to Floors
+                ← Back to Slots
               </button>
               <div className="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 border-2 border-purple-300 max-w-2xl mx-auto">
                 <h3 className="text-2xl font-bold text-center mb-8">Enter Class Details</h3>
@@ -185,13 +221,13 @@ export default function ClassGroupCreator() {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-purple-200">
-                      Subject Name
+                      Faculty Name
                     </label>
                     <input
                       type="text"
-                      value={subjectName}
-                      onChange={(e) => setSubjectName(e.target.value)}
-                      placeholder="e.g., Data Structures, Calculus, Physics"
+                      value={facultyName}
+                      onChange={(e) => setFacultyName(e.target.value)}
+                      placeholder="e.g., Dr. Smith, Prof. Kumar"
                       className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm border-2 border-purple-300 text-black placeholder-purple-200 focus:outline-none focus:border-white transition-colors"
                       disabled={loading}
                     />
@@ -199,12 +235,12 @@ export default function ClassGroupCreator() {
 
                   <div>
                     <label className="block text-sm font-semibold mb-2 text-purple-200">
-                      Classroom Number
+                      Room Number
                     </label>
                     <input
                       type="text"
-                      value={classroomNumber}
-                      onChange={(e) => setClassroomNumber(e.target.value)}
+                      value={roomNumber}
+                      onChange={(e) => setRoomNumber(e.target.value)}
                       placeholder="e.g., 101, A-205, Lab-3"
                       className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm border-2 border-purple-300 text-black placeholder-purple-200 focus:outline-none focus:border-white transition-colors"
                       disabled={loading}
@@ -231,14 +267,12 @@ export default function ClassGroupCreator() {
                   <div className="space-y-2 text-sm">
                     <p>
                       <span className="text-purple-200">Building:</span>{' '}
-                      <span className="font-semibold">
-                        {buildings.find(b => b.id === selectedBuilding)?.name}
-                      </span>
+                      <span className="font-semibold">{selectedBuilding}</span>
                     </p>
                     <p>
-                      <span className="text-purple-200">Floor:</span>{' '}
+                      <span className="text-purple-200">Slot:</span>{' '}
                       <span className="font-semibold">
-                        {floors.find(f => f.number === selectedFloor)?.name}
+                        {slots.find(s => s.id === selectedSlot)?.name}
                       </span>
                     </p>
                   </div>
@@ -254,15 +288,15 @@ export default function ClassGroupCreator() {
             <ul className="space-y-3 text-purple-100">
               <li className="flex items-start gap-3">
                 <span className="text-2xl">1️⃣</span>
-                <span>Select the building where your class is located</span>
+                <span>Select the building where your class is located (SMV, SJT, CDMM, etc.)</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl">2️⃣</span>
-                <span>Choose the floor where your classroom is situated</span>
+                <span>Choose your class time slot (A1, B2, V3, etc.)</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl">3️⃣</span>
-                <span>Enter your subject name and classroom number to create a study group</span>
+                <span>Enter your faculty name and room number to create a study group</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl">✨</span>
