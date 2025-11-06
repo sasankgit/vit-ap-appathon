@@ -9,6 +9,7 @@ import Login from './pages/login.jsx' // new login page
 import Home from './pages/Home.jsx'
 import ClassGroupCreator from './pages/collection.jsx'
 import GroupChat from './pages/classgroup.jsx'
+import GoogleGenerativeAI from './pages/sumarizer.jsx'
 
 
 
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/collection" element={<ClassGroupCreator/>}/>
             <Route path="/groups" element={<GroupChat/>}/>
+            <Route path="/summarize" element={<GoogleGenerativeAI/>}/>
             
             
             
