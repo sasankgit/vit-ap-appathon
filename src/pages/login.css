@@ -1,0 +1,150 @@
+/* Sparkling Blue & White Supabase Login Theme */
+
+/* ===========================
+   Global Page Setup
+=========================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e6f0ff, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating Glow Background */
+body::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle at 10% 20%, rgba(173, 216, 255, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(0, 102, 204, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(173, 216, 255, 0.25) 0%, transparent 60%);
+  animation: floatGlow 10s infinite alternate ease-in-out;
+  z-index: 0;
+  pointer-events: none; /* ✅ prevents blocking input fields */
+}
+
+@keyframes floatGlow {
+  from { transform: translateY(0px) scale(1); }
+  to { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ===========================
+   Login Container
+=========================== */
+.login-container {
+  position: relative;
+  z-index: 10; /* stays above all layers */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 35px rgba(0, 102, 204, 0.25);
+  border-radius: 20px;
+  padding: 40px 60px;
+  width: 400px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    padding: 30px 20px;
+  }
+}
+
+/* ===========================
+   Header & Text
+=========================== */
+h1 {
+  color: #0056b3;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 2rem;
+  text-shadow: 0 0 8px rgba(0, 153, 255, 0.2);
+}
+
+p {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ===========================
+   Supabase Auth UI Styling
+=========================== */
+.auth-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button,
+input[type="submit"] {
+  background-color: #007bff !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3) !important;
+  cursor: pointer !important;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3 !important;
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+input[type="email"],
+input[type="password"] {
+  border: 2px solid #cce0ff !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+  background-color: #f8fbff !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #333 !important;
+  font-size: 0.95rem !important;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff !important;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+  outline: none !important;
+}
+
+/* ===========================
+   Sparkles
+=========================== */
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 153, 255, 0.8);
+  border-radius: 50%;
+  animation: sparkleFloat 3s infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes sparkleFloat {
+  0% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-15px); }
+  100% { opacity: 0; transform: translateY(0); }
+}
