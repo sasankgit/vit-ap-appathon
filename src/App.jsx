@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import Login from './pages/login.jsx' // new login page
 import Home from './pages/Home.jsx'
+import ClassGroupCreator from './pages/collection.jsx'
+import GroupChat from './pages/classgroup.jsx'
 
 
 
@@ -37,6 +39,8 @@ export default function App() {
         ) : (
           <>
             <Route path="/" element={<Home />} />
+            <Route path="/collection" element={<ClassGroupCreator/>}/>
+            <Route path="/groups" element={<GroupChat/>}/>
             
             
             

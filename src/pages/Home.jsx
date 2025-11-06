@@ -25,25 +25,29 @@ export default function Home() {
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-8">
+            <Link to = "/collection">
             <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
               GET STARTED
             </button>
+            </Link>
             
             <div className="grid grid-cols-2 gap-6 w-full max-w-md">
-              <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-3xl p-8 border border-purple-300">
-                <div className="text-6xl font-bold bg-gradient-to-r from-purple-300 to-pink-900 bg-clip-text text-transparent">
-                  500+
-                </div>
-                <p className="text-sm mt-2 text-purple-200">Active Students</p>
-              </div>
-              
-              <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-3xl p-8 border border-purple-300">
-                <div className="text-6xl font-bold bg-gradient-to-r from-purple-300 to-pink-900 bg-clip-text text-transparent">
-                  50+
-                </div>
-                <p className="text-sm mt-2 text-purple-200">Study Groups</p>
-              </div>
-            </div>
+
+  <div className="bg-purple-950 bg-opacity-30 backdrop-blur-lg rounded-3xl p-8 border border-purple-400 border-opacity-40">
+    <div className="text-6xl font-bold bg-gradient-to-r from-purple-300 to-pink-900 bg-clip-text text-transparent">
+      500+
+    </div>
+    <p className="text-sm mt-2 text-purple-200">Active Students</p>
+  </div>
+  
+  <div className="bg-purple-950 bg-opacity-30 backdrop-blur-lg rounded-3xl p-8 border border-purple-400 border-opacity-40">
+    <div className="text-6xl font-bold bg-gradient-to-r from-purple-300 to-pink-900 bg-clip-text text-transparent">
+      50+
+    </div>
+    <p className="text-sm mt-2 text-purple-200">Study Groups</p>
+  </div>
+  
+</div>
 
             <div className="flex gap-4 mt-4">
               <div className="w-12 h-12 bg-purple-300 rounded-full flex items-center justify-center">
