@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabase';
+import {Link} from 'react-router-dom'
 
 export default function GroupChat() {
   const [classGroups, setClassGroups] = useState([]);
@@ -136,6 +137,8 @@ export default function GroupChat() {
               <span className="text-4xl font-bold text-purple-200">{'}'}</span>
               <h1 className="text-3xl font-bold">StudyConnect</h1>
             </div>
+            
+            
             <h2 className="text-2xl font-bold mb-2">Enter Your Name</h2>
             <p className="text-purple-200">Choose a display name for the chat</p>
           </div>
@@ -221,6 +224,7 @@ export default function GroupChat() {
                     Room {selectedGroup.classroom_number}
                   </p>
                 </div>
+                
 
                 {/* Messages Area */}
                 <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -289,6 +293,8 @@ export default function GroupChat() {
                   <p className="text-purple-200">Choose a group to start chatting</p>
                 </div>
               </div>
+              
+             
             )}
           </div>
         </div>

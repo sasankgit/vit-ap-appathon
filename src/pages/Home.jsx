@@ -25,7 +25,7 @@ export default function Home() {
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-8">
-            <Link to = "/collection">
+            <Link to = "/groups">
             <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
               GET STARTED
             </button>
@@ -81,6 +81,13 @@ export default function Home() {
               <p className="text-purple-200">
                 Choose the courses you're currently enrolled in and need help with. Our system tracks all subjects across your university.
               </p>
+            </div>
+            <div className='p-5 bg-amber-400'>
+              <Link to='summarize'>
+              <button>
+                smart AI summarizer
+              </button>
+              </Link>
             </div>
 
             <div className="text-center space-y-4">
@@ -229,10 +236,10 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link 
-              to="/signup" 
+              to="/collection" 
               className="bg-white text-purple-900 px-12 py-4 rounded-full font-bold text-lg hover:bg-purple-100 transition-colors shadow-lg"
             >
-              Sign Up Now
+              View messages
             </Link>
             
             <Link 
